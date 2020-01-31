@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 
-/* set standard font settings and hid overflow  */
+/* set standard font settings and hide overflow  */
 html, body {
     overflow-x: hidden;
     padding: 2rem;
@@ -28,7 +28,7 @@ html, body {
                         url(img/mountains.jpeg);
     background-size: cover;
     background-position: top;
-    clip-path: polygon( 0 0, 100% 0, 100% 80%, 0 100%  ); /* follow the path in the order of x y from top left in clockwise direction  for a handy tool go to bennettfeely.com/clippy */
+    clip-path: polygon( 0 0, 100% 0, 100% 75%, 0 100%  ); /* follow the path in the order of x y from top left in clockwise direction  for a handy tool go to bennettfeely.com/clippy */
 }
 
 /* main header content */
@@ -53,6 +53,8 @@ html, body {
 .primary-header {
     color: white;
     align-content: center;
+    text-transform: uppercase;
+    backface-visibility: hidden; /* to prevent known glitches in animation, does not work if you want to rotate because it has no backface anymore */
 }
 
 .primary-title {
@@ -60,12 +62,7 @@ html, body {
     letter-spacing: .2rem;
     font-weight: 700;
     display: block;
-    text-transform: uppercase;
-
-    animation-name: moveInLeft;
-    animation-duration: 2s;
-    animation-timing-function: ease-out;
-
+    animation: moveInLeft 2s ease-out;
 }
 
 .primary-text {
@@ -73,12 +70,29 @@ html, body {
     letter-spacing: .1rem;
     font-weight: 400;
     display: block;
-    text-transform: uppercase;
 
-    animation-name: moveInRight;
-    animation-duration: 2s ;
-    animation-timing-function: ease-out;
+    animation: moveInRight 2s ease-out;
 }
+
+.btn-white, .btn-white:visited, .btn-white:link  {
+    background-color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    padding: .5rem;
+    margin: 1rem;
+    border-radius: .5rem;
+
+    animation: moveInBottom 1.5s ease-out .75s;
+    animation-fill-mode: backwards; /* before the animation plays, the button has the 0% state of the animation */
+}
+
+.btn-white:hover {
+    transform: scale( 1.1);
+    transition: 0.2s ease-out;
+}
+
 
 /* main header animation */
 @keyframes moveInLeft {
@@ -105,6 +119,17 @@ html, body {
     }
 }
 
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+
+    } 100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Reminder
 
 when using animation only use transform and opacity, the others are not optimized yet
@@ -112,3 +137,37 @@ when making keyframes do so in % 0% begin the start end 100% begin the end.
 you can add any number of keyframes at different %.
 
 */
+
+/* green container for blend setting experiments */
+
+.green-container {
+    display:block;
+    overflow: hidden; /* scale to fit content */
+    margin-top: 2rem;
+    padding: 10rem 0 10rem 0;
+    background-color:rgb(0, 255, 13);
+    clip-path: polygon(0% 10rem, 100% 0%, 100% calc(100% - 10rem), 0% 100%);
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.blender-black {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    mix-blend-mode: darken; 
+
+}
+
+.blender-white {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: black;
+    mix-blend-mode: lighten; 
+}
