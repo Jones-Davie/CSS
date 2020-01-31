@@ -64,6 +64,7 @@ html, body {
 
     animation-name: moveInLeft;
     animation-duration: 2s;
+    animation-timing-function: ease-out;
 
 }
 
@@ -75,7 +76,8 @@ html, body {
     text-transform: uppercase;
 
     animation-name: moveInRight;
-    animation-duration: 2s;
+    animation-duration: 2s ;
+    animation-timing-function: ease-out;
 }
 
 /* main header animation */
