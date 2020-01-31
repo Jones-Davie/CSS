@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
+
+/*  get rid of standard padding and margins and set box type to border box to make it scale easier  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* set standard font settings and hid overflow  */
+html, body {
+    overflow-x: hidden;
+    padding: 2rem;
+
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    font-size: 1rem;
+    color: #777;
+}
+
+/*  header */
+.header {
+    position: relative;
+    height: 95vh;
+    background-image:   linear-gradient(to right bottom, rgba(8, 184, 17, 0.801), rgba(0, 255, 13, 0.767)), 
+                        url(img/mountains.jpeg);
+    background-size: cover;
+    background-position: top;
+    clip-path: polygon( 0 0, 100% 0, 100% 80%, 0 100%  ); /* follow the path in the order of x y from top left in clockwise direction  for a handy tool go to bennettfeely.com/clippy */
+}
+
+.logobox {
+    position: absolute; /* only works because the position of the parent is also set*/
+    top: 2rem;
+    left: 2rem;
+}
+
+.logo {
+    height: 3rem;
+}
+
+.text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -40%, -50%); /* css always calculates from the top left of the element box, this fix transforms the calculated location to the center of the element */
+    text-align: center;
+}
+
+.primary-header {
+    color: white;
+    align-content: center;
+}
+
+.primary-title {
+    font-size: 2rem;
+    letter-spacing: .2rem;
+    font-weight: 700;
+    display: block;
+    text-transform: uppercase;
+}
+
+.primary-text {
+    font-size: 1rem;
+    letter-spacing: .1rem;
+    font-weight: 400;
+    display: block;
+    text-transform: uppercase;
+}
